@@ -1,3 +1,21 @@
+fork from bedrockio/export-html
+
+# How to use PDF generator on wshosting k8
+
+lives in k8 on address `export-html-pdf-service.export-html-pdf` (try ping this address)
+
+example of usage (format A4 needs to be set, default is something called Letter):
+
+```bash
+curl \
+-d '{"html": "<h1>Hello Pilulka World!</h1>", "export": {"format": "A4"}}' \
+-H "Content-Type: application/json" \
+--output hello-a4.pdf \
+-XPOST "http://export-html-pdf-service.export-html-pdf/1/pdf"
+```
+
+original readme follows:
+
 # Export HTML to PDF Service
 
 This is a simple Docker container that runs a JSON API service that allows HTML to be converted to PDF or PNG/JPG images. This service accomplishes this by using a [Chrome headless browser](https://github.com/GoogleChrome/puppeteer) to ensure full rendering capabilities on par with Google Chrome.
@@ -7,7 +25,7 @@ _Security Note: This is intended to run as a micro service - do not directly exp
 ## Usage
 
 ```bash
-docker run  -p 2305:2305 bedrockio/export-html
+docker run -p 2305:2305 bedrockio/export-html
 ```
 
 Or:
